@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" type="text/css" href="https://sohe.wisc.edu/wordpress/wp-content/themes/sohe-2016/style.css" />
+    <title>Technical Design in Action &#8211; School of Human Ecology</title>
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="School of Human Ecology &raquo; Technical Design in Action Comments Feed" href="https://sohe.wisc.edu/technical-design-in-action/feed/" />
+<!-- This site uses the Google Analytics by MonsterInsights plugin v7.7.1 - Using Analytics tracking - https://www.monsterinsights.com/ -->
+<script type="text/javascript" data-cfasync="false">
+	var mi_version         = '7.7.1';
+	var mi_track_user      = true;
+	var mi_no_track_reason = '';
+	
+	var disableStr = 'ga-disable-UA-44954825-1';
+
+	/* Function to detect opted out users */
+	function __gaTrackerIsOptedOut() {
+		return document.cookie.indexOf(disableStr + '=true') > -1;
+	}
+
+	/* Disable tracking if the opt-out cookie exists. */
+	if ( __gaTrackerIsOptedOut() ) {
+		window[disableStr] = true;
+	}
+
+	/* Opt-out function */
+	function __gaTrackerOptout() {
+	  document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
+	  window[disableStr] = true;
+	}
+	
+	if ( mi_track_user ) {
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','__gaTracker');
+
+		__gaTracker('create', 'UA-44954825-1', 'auto');
+		__gaTracker('set', 'forceSSL', true);
+		__gaTracker('send','pageview');
+	} else {
+		console.log( "" );
+		(function() {
+			/* https://developers.google.com/analytics/devguides/collection/analyticsjs/ */
+			var noopfn = function() {
+				return null;
+			};
+			var noopnullfn = function() {
+				return null;
+			};
+			var Tracker = function() {
+				return null;
+			};
+			var p = Tracker.prototype;
+			p.get = noopfn;
+			p.set = noopfn;
+			p.send = noopfn;
+			var __gaTracker = function() {
+				var len = arguments.length;
+				if ( len === 0 ) {
+					return;
+				}
+				var f = arguments[len-1];
+				if ( typeof f !== 'object' || f === null || typeof f.hitCallback !== 'function' ) {
+					console.log( 'Not running function __gaTracker(' + arguments[0] + " ....) because you are not being tracked. " + mi_no_track_reason );
+					return;
+				}
+				try {
+					f.hitCallback();
+				} catch (ex) {
+
+				}
+			};
+			__gaTracker.create = function() {
+				return new Tracker();
+			};
+			__gaTracker.getByName = noopnullfn;
+			__gaTracker.getAll = function() {
+				return [];
+			};
+			__gaTracker.remove = noopfn;
+			window['__gaTracker'] = __gaTracker;
+					})();
+		}
+</script>
+<!-- / Google Analytics by MonsterInsights -->
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11.2.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/sohe.wisc.edu\/wordpress\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.1.1"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='accordion-responsive-css-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/accordions-wp/css/responsive-accordion.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='accordion-main-css-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/accordions-wp/css/style.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-color-picker-css'  href='https://sohe.wisc.edu/wordpress/wp-admin/css/color-picker.min.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://sohe.wisc.edu/wordpress/wp-includes/css/dist/block-library/style.min.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='pdfemb-gutenberg-block-backend-js-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/pdf-embedder/css/pdfemb-blocks.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.3' type='text/css' media='all' />
+<link rel='stylesheet' id='events-manager-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager/includes/css/events_manager.css?ver=5.95' type='text/css' media='all' />
+<link rel='stylesheet' id='events-manager-pro-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager-pro/includes/css/events-manager-pro.css?ver=2.5' type='text/css' media='all' />
+<link rel='stylesheet' id='tp_accordions-accordion-css-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/wp-accordions-pro/css/smk-accordion.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tp_accordions-fonts-css-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/wp-accordions-pro/css/font-awesome.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='genericons.css-css'  href='https://sohe.wisc.edu/wordpress/wp-content/themes/sohe-2016/css/genericons/genericons.css?ver=3.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='google-fonts-css'  href='https://fonts.googleapis.com/css?family=Oswald%3A400' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://sohe.wisc.edu/wordpress/wp-content/tablepress-combined.min.css?ver=7' type='text/css' media='all' />
+<!-- `sharedaddy` is included in the concatenated jetpack.css -->
+<link rel='stylesheet' id='social-logos-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/_inc/social-logos/social-logos.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/css/jetpack.css?ver=7.5.2' type='text/css' media='all' />
+<link rel='stylesheet' id='easymedia_styles-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/css/frontend.css?ver=5.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='easymedia_paganimate-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/css/animate.css?ver=5.1.1' type='text/css' media='all' />
+<!--[if !IE]><!-->
+<link rel='stylesheet' id='tablepress-responsive-css'  href='https://sohe.wisc.edu/wordpress/wp-content/plugins/tablepress-responsive-tables/tablepress-responsive.min.css?ver=1.1' type='text/css' media='all' />
+<!--<![endif]-->
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/accordions-wp/js/responsive-accordion.min.js?ver=1.0'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,exe,js,pdf,ppt,tgz,zip,xls","inbound_paths":"[]","home_url":"https:\/\/sohe.wisc.edu","hash_tracking":"false"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.js?ver=7.7.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/jquery/jquery.fittext.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/mootools/mootools-core-1.4.5-min.js?ver=5.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var EasyM = {"nblaswf":"https:\/\/sohe.wisc.edu\/wordpress\/wp-content\/plugins\/easy-media-gallery-pro\/includes\/swf\/NonverBlaster.swf","audiovol":"75","audioautoplay":"true","audioloop":"true","vidautopa":"&autoplay=1","vidautopb":"?autoplay=1","vidautopc":"1","vidautopd":"true","drclick":"true","swcntr":"true","pageffect":"flipInX","ajaxconid":"#content","defstyle":"Light","isslide":"1","probrintv":"7","mediaswf":"https:\/\/sohe.wisc.edu\/wordpress\/wp-content\/plugins\/easy-media-gallery-pro\/includes\/addons\/mediaelement\/flashmediaelement.swf","ajaxpth":"\/wordpress\/wp-content\/plugins\/easy-media-gallery-pro\/includes\/easyloader.php","ovrlayop":"0.8","closepos":"0","sospos":"0"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/mootools/easymedia.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/jquery/jquery.isotope.min.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/func/frontend.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/jquery/jPages.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/jquery/jquery.lazyload.min.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/core.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/widget.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/position.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/mouse.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/sortable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.11.4'></script>
+<script type='text/javascript'>
+jQuery(document).ready(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":0,"isRTL":false});});
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/menu.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/wp-a11y.min.js?ver=5.1.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var uiAutocompleteL10n = {"noResults":"No results found.","oneResult":"1 result found. Use up and down arrow keys to navigate.","manyResults":"%d results found. Use up and down arrow keys to navigate.","itemSelected":"Item selected."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/autocomplete.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/resizable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/draggable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/button.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/dialog.min.js?ver=1.11.4'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var EM = {"ajaxurl":"https:\/\/sohe.wisc.edu\/wordpress\/wp-admin\/admin-ajax.php","locationajaxurl":"https:\/\/sohe.wisc.edu\/wordpress\/wp-admin\/admin-ajax.php?action=locations_search","firstDay":"0","locale":"en","dateFormat":"mm\/dd\/yy","ui_css":"https:\/\/sohe.wisc.edu\/wordpress\/wp-content\/plugins\/events-manager\/includes\/css\/jquery-ui.css","show24hours":"0","is_ssl":"1","google_maps_api":"AIzaSyCUYy9C4v6PiK3UKRDrOm4CxnvAXvDMWUA","bookingInProgress":"Please wait while the booking is being submitted.","tickets_save":"Save Ticket","bookingajaxurl":"https:\/\/sohe.wisc.edu\/wordpress\/wp-admin\/admin-ajax.php","bookings_export_save":"Export Bookings","bookings_settings_save":"Save Settings","booking_delete":"Are you sure you want to delete?","booking_offset":"30","bb_full":"Sold Out","bb_book":"Book Now","bb_booking":"Booking...","bb_booked":"Booking Submitted","bb_error":"Booking Error. Try again?","bb_cancel":"Cancel","bb_canceling":"Canceling...","bb_cancelled":"Cancelled","bb_cancel_error":"Cancellation Error. Try again?","txt_search":"Search","txt_searching":"Searching...","txt_loading":"Loading...","cache":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager/includes/js/events-manager.js?ver=5.95'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager-pro/includes/js/events-manager-pro.js?ver=2.5'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/wp-accordions-pro/js/smk-accordion.js?ver=1.0'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/wp-accordions-pro/js/responsive-accordion.min.js?ver=1.0'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/themes/sohe-2016/js/sohe-all.js'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/themes/sohe-2016/js/sohe-shortcodes.js'></script>
+<link rel='https://api.w.org/' href='https://sohe.wisc.edu/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://sohe.wisc.edu/wordpress/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://sohe.wisc.edu/wordpress/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Student Story: Re-Thinking Retail' href='https://sohe.wisc.edu/target-re-thinking-retail/' />
+<link rel='next' title='The Art of Shoemaking' href='https://sohe.wisc.edu/the-art-of-shoemaking/' />
+<meta name="generator" content="WordPress 5.1.1" />
+<link rel="canonical" href="https://sohe.wisc.edu/technical-design-in-action/" />
+<link rel='shortlink' href='https://wp.me/p4YL59-93H' />
+<link rel="alternate" type="application/json+oembed" href="https://sohe.wisc.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsohe.wisc.edu%2Ftechnical-design-in-action%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://sohe.wisc.edu/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsohe.wisc.edu%2Ftechnical-design-in-action%2F&#038;format=xml" />
+<link rel="alternate stylesheet" title="Dark" type="text/css" media="screen,projection" href="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/css/styles/mediabox/Dark.css" />
+<link rel="alternate stylesheet" title="Light" type="text/css" media="screen,projection" href="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/css/styles/mediabox/Light.css" />
+<link rel="alternate stylesheet" title="Transparent" type="text/css" media="screen,projection" href="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/css/styles/mediabox/Transparent.css" />
+
+<script src="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/addons/mediaelement/mediaelement-and-player.min.js"></script>
+<link href="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/addons/mediaelement/mediaelementplayer-skin-yellow.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/dynamic-style.php" type="text/css" media="screen" />   
+
+<!-- Easy Media Gallery PRO START (version 1.5.0.1)-->       
+
+ <!--[if lt IE 9]>
+<script src="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/func/html5.js" type="text/javascript"></script>
+<![endif]-->   
+
+ <!--[if lt IE 9]>
+<script src="https://sohe.wisc.edu/wordpress/wp-content/plugins/easy-media-gallery-pro/includes/js/func/html5shiv.js" type="text/javascript"></script>
+<![endif]-->  
+
+<!-- Easy Media Gallery PRO END  -->  
+    
+			<style type="text/css">
+			.em-coupon-code { width:150px; }
+			#em-coupon-loading { display:inline-block; width:16px; height: 16px; margin-left:4px; background:url(https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager-pro/includes/images/spinner.gif)}
+			.em-coupon-message { display:inline-block; margin:5px 0px 0px 105px; text-indent:22px; }
+			.em-coupon-success { color:green; background:url(https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager-pro/includes/images/success.png) 0px 0px no-repeat }
+			.em-coupon-error { color:red; background:url(https://sohe.wisc.edu/wordpress/wp-content/plugins/events-manager-pro/includes/images/error.png) 0px 0px no-repeat }
+			.em-cart-coupons-form .em-coupon-message{ margin:5px 0px 0px 0px; }
+			#em-coupon-loading { margin-right:4px; }	
+		</style>
+		
+<link rel='dns-prefetch' href='//v0.wordpress.com'/>
+<link rel='dns-prefetch' href='//i0.wp.com'/>
+<link rel='dns-prefetch' href='//i1.wp.com'/>
+<link rel='dns-prefetch' href='//i2.wp.com'/>
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Technical Design in Action" />
+<meta property="og:url" content="https://sohe.wisc.edu/technical-design-in-action/" />
+<meta property="og:description" content="On September 21, the Design Leadership Symposium class had the honor of welcoming Andrea Pease to their class to speak. Andrea is a fellow UW Madison graduate, with a degree in Textile and Fashion …" />
+<meta property="article:published_time" content="2017-10-03T14:00:56+00:00" />
+<meta property="article:modified_time" content="2018-01-10T17:46:13+00:00" />
+<meta property="og:site_name" content="School of Human Ecology" />
+<meta property="og:image" content="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?fit=250%2C250&amp;ssl=1" />
+<meta property="og:image:width" content="250" />
+<meta property="og:image:height" content="250" />
+<meta property="og:image:alt" content="Kohl&#039;s Logo" />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:text:title" content="Technical Design in Action" />
+<meta name="twitter:image" content="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?fit=250%2C250&#038;ssl=1&#038;w=240" />
+<meta name="twitter:image:alt" content="Kohl&#039;s Logo" />
+<meta name="twitter:card" content="summary" />
+
+<!-- End Jetpack Open Graph Tags -->
+			<style type="text/css" id="wp-custom-css">
+				/*
+You can add your own CSS here.
+
+Click the help icon above to learn more.
+*/			</style>
+		
+<!-- Hotjar Tracking Code for www.sohe.wisc.edu -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:36761,hjsv:5};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+
+<!-- Google Analytics Code Jun28 for www.sohe.wisc.edu -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44954825-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+<!-- Google Analytics Code First for www.sohe.wisc.edu -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-44954825-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TK2DDP5');</script>
+<!-- End Google Tag Manager -->
+
+<meta name="google-site-verification" content="A4kpciq_QqSS8_TN4cy4MYgEpc7RCO02Ujne7nCXiTg" />
+
+
+</head>
+<body class="post-template-default single single-post postid-34825 single-format-standard">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TK2DDP5"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<div id="wrapper" class="hfeed">
+    <header id="header" role="banner">
+        <div class="top">
+            <nav class="secondary-menu-search">
+                <div class="search">
+                    
+<form role="search" method="get" class="search-form" action="https://sohe.wisc.edu/">
+    <label>
+        <span class="screen-reader-text">Search for:</span>
+        <input type="search"
+               class="search-field"
+               placeholder="Search SoHE"
+               value=""
+               name="s"
+               title="Search for:" />
+    </label>
+    <button type="submit" class="search-submit">
+        <span class="screen-reader-text">Search</span>
+    </button>
+</form>
+                </div>
+            </nav>
+            <section class="branding">
+                <span class="screen-reader-text">Return to the SoHE Home Page</span>
+                <a href="https://sohe.wisc.edu">
+                    <img class="crest" src="https://sohe.wisc.edu/wordpress/wp-content/themes/sohe-2016/img/header-crest.png" alt="UW Crest" />
+                </a>
+                <a href="https://sohe.wisc.edu">
+                    <img class="title" src="https://sohe.wisc.edu/wordpress/wp-content/themes/sohe-2016/img/school-of-human-ecology.png" alt="School of Human Ecology" />
+                </a>
+                <div class="clear"></div>
+            </section>
+            <div class="clear"></div>
+        </div>
+
+                    <div id="give-wrapper">
+                <a id="give-ribbon" target="_blank" href="https://secure.supportuw.org/give/?id=E46F7EB3-3BD5-41E3-A5AE-68D50358CE27&custom=hec01">
+                    <div class="give-bg"></div>
+                    <div class="give-front">Give</div>
+                </a>
+            </div>
+        
+        <nav class="main-menu" role="navigation">
+            <a class="toggle" href="#">&nbsp;</a>
+            <div class="fill"></div>
+            <div class="main-menu-wrapper">
+                <div class="search">
+                    
+<form role="search" method="get" class="search-form" action="https://sohe.wisc.edu/">
+    <label>
+        <span class="screen-reader-text">Search for:</span>
+        <input type="search"
+               class="search-field"
+               placeholder="Search SoHE"
+               value=""
+               name="s"
+               title="Search for:" />
+    </label>
+    <button type="submit" class="search-submit">
+        <span class="screen-reader-text">Search</span>
+    </button>
+</form>
+                </div>
+                <div class="menu-primary-navigation-container"><ul id="menu-primary-navigation" class="menu"><li id="menu-item-1587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1587"><a href="https://sohe.wisc.edu/prospective-students/">Students</a>
+<ul class="sub-menu">
+	<li id="menu-item-45528" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-45528"><a href="https://sohe.wisc.edu/sohe101/academic-departments/">Majors</a></li>
+	<li id="menu-item-23692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23692"><a href="https://sohe.wisc.edu/prospective-students/advising/">Advising</a></li>
+	<li id="menu-item-23693" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23693"><a href="https://sohe.wisc.edu/prospective-students/beyond-classroom/">Involvement</a></li>
+	<li id="menu-item-23694" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23694"><a href="https://sohe.wisc.edu/prospective-students/career-development/">Career Development</a></li>
+	<li id="menu-item-23695" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23695"><a href="https://sohe.wisc.edu/prospective-students/prospective-students/">Prospective Students</a></li>
+	<li id="menu-item-23696" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23696"><a href="https://sohe.wisc.edu/prospective-students/scholarship/">Scholarships</a></li>
+	<li id="menu-item-23697" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23697"><a href="https://sohe.wisc.edu/prospective-students/contact-us/">Contact Us</a></li>
+</ul>
+</li>
+<li id="menu-item-17702" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17702"><a href="https://sohe.wisc.edu/graduate-students/">Grad Students</a>
+<ul class="sub-menu">
+	<li id="menu-item-23684" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23684"><a href="https://sohe.wisc.edu/graduate-students/research-and-creative-scholarship/">Graduate Degree Options</a></li>
+	<li id="menu-item-24631" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24631"><a href="https://sohe.wisc.edu/graduate-students/how-to-apply/">How to Apply</a></li>
+	<li id="menu-item-23685" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23685"><a href="https://sohe.wisc.edu/graduate-students/application-and-funding/">Student Life &#038; Services</a></li>
+	<li id="menu-item-23688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23688"><a href="https://sohe.wisc.edu/graduate-students/funding/">Funding</a></li>
+	<li id="menu-item-24424" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24424"><a href="https://sohe.wisc.edu/graduate-students/visit-us/">Visit Us</a></li>
+	<li id="menu-item-23691" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23691"><a href="https://sohe.wisc.edu/graduate-students/academic-policies-forms-deadlines/">Policies &#038; Forms</a></li>
+	<li id="menu-item-23689" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23689"><a href="https://sohe.wisc.edu/graduate-students/graduate-studentsprogram-contacts/">Contact Us</a></li>
+</ul>
+</li>
+<li id="menu-item-17705" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17705"><a href="https://sohe.wisc.edu/sohe101/">SoHE 101</a>
+<ul class="sub-menu">
+	<li id="menu-item-23699" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23699"><a href="https://sohe.wisc.edu/sohe101/academic-departments/">Majors</a></li>
+	<li id="menu-item-23698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23698"><a href="https://sohe.wisc.edu/sohe101/about-human-ecology/">Departments</a></li>
+	<li id="menu-item-23700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23700"><a href="https://sohe.wisc.edu/sohe101/history-of-the-school/">History</a></li>
+	<li id="menu-item-23701" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23701"><a href="https://sohe.wisc.edu/sohe101/onesohe21-story/">OneSoHE21</a></li>
+	<li id="menu-item-23706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23706"><a href="https://sohe.wisc.edu/sohe101/visit-us/">Visit Us</a></li>
+	<li id="menu-item-23703" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23703"><a href="https://sohe.wisc.edu/sohe101/sohe-by-the-numbers/">By The Numbers</a></li>
+	<li id="menu-item-24438" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24438"><a href="https://sohe.wisc.edu/100-women/">100 Women Wall of Honor</a></li>
+</ul>
+</li>
+<li id="menu-item-17712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17712"><a href="https://sohe.wisc.edu/research-development/">Research &#038; Discover</a>
+<ul class="sub-menu">
+	<li id="menu-item-23708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23708"><a href="https://sohe.wisc.edu/research-development/research-engaged-scholarship/">Research &#038; Scholarship</a></li>
+	<li id="menu-item-23709" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23709"><a href="https://sohe.wisc.edu/research-development/preschool-home/">Child Development Lab</a></li>
+	<li id="menu-item-23860" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23860"><a href="https://sohe.wisc.edu/research-development/centers-of-excellence/">Centers of Excellence</a></li>
+	<li id="menu-item-23833" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23833"><a href="https://sohe.wisc.edu/research-development/initiatives/">Initiatives</a></li>
+	<li id="menu-item-23715" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23715"><a href="https://sohe.wisc.edu/research-development/centers-of-excellence/cdmc/textile-collection/">Textile Collection</a></li>
+	<li id="menu-item-23714" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23714"><a href="https://sohe.wisc.edu/research-development/centers-of-excellence/cdmc/design-gallery/">Ruth Davis Design Gallery</a></li>
+	<li id="menu-item-23713" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23713"><a href="https://sohe.wisc.edu/research-development/extension-programs-projects/">Extension</a></li>
+</ul>
+</li>
+<li id="menu-item-17718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17718"><a href="https://sohe.wisc.edu/connect/">Connect</a>
+<ul class="sub-menu">
+	<li id="menu-item-23717" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23717"><a href="https://sohe.wisc.edu/connect/alumni/">Alumni</a></li>
+	<li id="menu-item-23718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23718"><a href="https://sohe.wisc.edu/connect/faculty-staff/">SoHE People</a></li>
+	<li id="menu-item-24104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24104"><a href="https://sohe.wisc.edu/connect/donate/">Donate</a></li>
+	<li id="menu-item-23720" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23720"><a href="https://sohe.wisc.edu/connect/recruit-hire/">Recruit &#038; Hire</a></li>
+	<li id="menu-item-23721" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23721"><a href="https://sohe.wisc.edu/connect/meet-board-visitors/">Board of Visitors</a></li>
+	<li id="menu-item-38284" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-38284"><a href="https://sohe.wisc.edu/connect/social-media/">Social Media</a></li>
+</ul>
+</li>
+</ul></div>                <a id="give-button-mobile" target="_blank" href="https://secure.supportuw.org/give/?id=E46F7EB3-3BD5-41E3-A5AE-68D50358CE27&custom=hec01">Give</a>
+                <div class="clear"></div>
+            </div>
+            <div class="fill"></div>
+        </nav>
+
+    </header>
+    <div id="container"><section id="content" role="main">
+            <article id="post-34825" class="post-34825 post type-post status-publish format-standard has-post-thumbnail hentry category-design-leadership-symposium category-textile-fashion-design tag-design-leadership-symposium tag-technical-design tag-textiles-and-fashion-design">
+
+
+    <!--Display a 150x150 thumbnail if a thumbnail exists and this is not a singular event (the full post page) -->
+    
+    <header>    <h1 class="entry-title">    <a href="https://sohe.wisc.edu/technical-design-in-action/" title="Technical Design in Action" rel="bookmark">Technical Design in Action</a>
+    </h1>    
+<section class="entry-meta">
+    
+    <span class="author vcard"><a href="https://sohe.wisc.edu/author/danielle-croegaert/" title="Posts by Danielle Croegaert" rel="author">Danielle Croegaert</a></span>
+    <span class="meta-sep"> | </span>
+    <span class="entry-date">October 3, 2017</span>
+</section>    <div class="clear"></div>
+    </header>
+    <section class="entry-content">
+    <img width="250" height="250" src="https://sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Kohl&#039;s Logo" srcset="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?resize=250%2C250&amp;ssl=1 250w, https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?resize=150%2C150&amp;ssl=1 150w" sizes="(max-width: 250px) 100vw, 250px" data-attachment-id="34827" data-permalink="https://sohe.wisc.edu/technical-design-in-action/kohls-250x250/" data-orig-file="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?fit=250%2C250&amp;ssl=1" data-orig-size="250,250" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="kohls-250&#215;250" data-image-description="" data-medium-file="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?fit=250%2C250&amp;ssl=1" data-large-file="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/kohls-250x250.png?fit=250%2C250&amp;ssl=1" />    <p>On September 21, the Design Leadership Symposium class had the honor of welcoming Andrea Pease to their class to speak. Andrea is a fellow UW Madison graduate, with a degree in <a href="https://sohe.wisc.edu/sohe101/academic-departments/textiles-fashion-design/">Textile and Fashion Desig</a>n as well as a secondary degree through the FIT program. Since then, she’s created a successful career for herself at <a href="http://kohls.com">Kohl’s</a> as a technical designer in the children’s clothing department at Kohl&#8217;s. She’s also a familiar to many in SoHE, as she has found time to give talks as well as being a juror for the TFD <a href="https://sohe.wisc.edu/sohe101/academic-departments/textiles-fashion-design/threads-design-and-fashion-event/">Fashion Show &#8211; Threads</a>.</p>
+<div id="attachment_34826" style="width: 310px" class="wp-caption alignright"><img aria-describedby="caption-attachment-34826" data-attachment-id="34826" data-permalink="https://sohe.wisc.edu/technical-design-in-action/andrea-pease/" data-orig-file="https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/Andrea-Pease.png?fit=716%2C537&amp;ssl=1" data-orig-size="716,537" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="Andrea Pease" data-image-description="" data-medium-file="https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/Andrea-Pease.png?fit=300%2C225&amp;ssl=1" data-large-file="https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/Andrea-Pease.png?fit=716%2C537&amp;ssl=1" class="size-medium wp-image-34826" src="https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/Andrea-Pease.png?resize=300%2C225&#038;ssl=1" alt="Design Symposium Students with Andrea Pease" width="300" height="225" srcset="https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/Andrea-Pease.png?resize=300%2C225&amp;ssl=1 300w, https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2017/10/Andrea-Pease.png?w=716&amp;ssl=1 716w" sizes="(max-width: 300px) 100vw, 300px" data-recalc-dims="1" /><p id="caption-attachment-34826" class="wp-caption-text">Design Symposium Students with Andrea Pease</p></div>
+<p>Andrea&#8217;s talk was fascinating as well as very informative. The class had the chance to understand what a designer’s job entails after college, and learned the importance of problem solving in a professional setting. At the beginning of her presentation, Andrea asked the class how many were familiar with the position of technical designers; very few raised their hands. This is one of the biggest things that comes from Leadership Symposiums in SoHE- the opportunity to gain insight from non-traditional positions is very important for college students who are “trying to figure it all out. Thus, students were enthusiastic to learn what a technical designers job involves. From being the “engineers of fashion” to the “liaison between design and production, technical designers do a lot of behind the scenes work that goes underappreciated. One of the biggest responsibility of technical designers is perfecting the right “fit”. Without them garments would be all about looks, not taking into consideration the way it feels, fits and functions. Seeing how much work goes on between the planning of a product to something that is marketable was eye opening for many, and was exciting for many of our TFD majors to see.</p>
+<p>Another aspect of her presentation that excited many was the complex balance between marketing unique items, while also creating clothing that is comparable to their competitors. It was insightful to hear about the importance of knowing what the competition is creating and what the consumers like, while also maintaining a brand identity. The final thing that took many of the students by surprise was the large network of communication Andrea and her team are expected to maintain. They must to be able to communicate effectively between the designers, the manufacturers, as well as the consumers in order to ensure everything is made to the satisfaction of everyone involved.</p>
+<hr />
+<p><a href="https://secure.supportuw.org/give/?id=E46F7EB3-3BD5-41E3-A5AE-68D50358CE27&amp;custom=hec01" target="_blank" rel="noopener"><img data-attachment-id="19974" data-permalink="https://sohe.wisc.edu/home/all-ways-forward-button/" data-orig-file="https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2014/12/ALL-Ways-Forward-Button-e1456181190207.png?fit=300%2C300&amp;ssl=1" data-orig-size="300,300" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="ALL Ways Forward Button" data-image-description="" data-medium-file="https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2014/12/ALL-Ways-Forward-Button-e1456181190207.png?fit=300%2C300&amp;ssl=1" data-large-file="https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2014/12/ALL-Ways-Forward-Button-e1456181190207.png?fit=300%2C300&amp;ssl=1" class="alignleft size-thumbnail wp-image-19974" src="https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2014/12/ALL-Ways-Forward-Button.png?resize=150%2C150&#038;ssl=1" alt="ALL Ways Forward Button." width="150" height="150" data-recalc-dims="1" /></a></p>
+<p>Providing Student Support</p>
+<p>Annual gifts provide immediately available discretionary funds that the Dean uses for recruiting and producing SoHE’s leaders of tomorrow. Individual support makes a lasting impact on the lives of our talented young scholars by turning their dreams of an excellent education into reality.</p>
+<p>Click “<a href="https://secure.supportuw.org/give/?id=E46F7EB3-3BD5-41E3-A5AE-68D50358CE27&amp;custom=hec01" target="_blank" rel="noopener">All Ways Forward</a>” to start making a difference.</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-facebook"><a rel="nofollow noopener noreferrer" data-shared="sharing-facebook-34825" class="share-facebook sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/?share=facebook" target="_blank" title="Click to share on Facebook"><span></span><span class="sharing-screen-reader-text">Click to share on Facebook (Opens in new window)</span></a></li><li class="share-twitter"><a rel="nofollow noopener noreferrer" data-shared="sharing-twitter-34825" class="share-twitter sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/?share=twitter" target="_blank" title="Click to share on Twitter"><span></span><span class="sharing-screen-reader-text">Click to share on Twitter (Opens in new window)</span></a></li><li class="share-linkedin"><a rel="nofollow noopener noreferrer" data-shared="sharing-linkedin-34825" class="share-linkedin sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/?share=linkedin" target="_blank" title="Click to share on LinkedIn"><span></span><span class="sharing-screen-reader-text">Click to share on LinkedIn (Opens in new window)</span></a></li><li class="share-pinterest"><a rel="nofollow noopener noreferrer" data-shared="sharing-pinterest-34825" class="share-pinterest sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/?share=pinterest" target="_blank" title="Click to share on Pinterest"><span></span><span class="sharing-screen-reader-text">Click to share on Pinterest (Opens in new window)</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>More</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-email"><a rel="nofollow noopener noreferrer" data-shared="" class="share-email sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/?share=email" target="_blank" title="Click to email this to a friend"><span></span><span class="sharing-screen-reader-text">Click to email this to a friend (Opens in new window)</span></a></li><li class="share-print"><a rel="nofollow noopener noreferrer" data-shared="" class="share-print sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/#print" target="_blank" title="Click to print"><span></span><span class="sharing-screen-reader-text">Click to print (Opens in new window)</span></a></li><li class="share-end"></li><li class="share-jetpack-whatsapp"><a rel="nofollow noopener noreferrer" data-shared="" class="share-jetpack-whatsapp sd-button share-icon no-text" href="https://sohe.wisc.edu/technical-design-in-action/?share=jetpack-whatsapp" target="_blank" title="Click to share on WhatsApp"><span></span><span class="sharing-screen-reader-text">Click to share on WhatsApp (Opens in new window)</span></a></li><li class="share-end"></li></ul></div></div></div></div></div>    <div class="entry-links"></div>
+</section>    <footer class="entry-footer">
+    <span class="cat-links">Categories: <a href="https://sohe.wisc.edu/category/design-leadership-symposium/" rel="category tag">Design Leadership Symposium</a>, <a href="https://sohe.wisc.edu/category/majors/textile-fashion-design/" rel="category tag">Textile &amp; Fashion Design</a></span>
+    <span class="tag-links">Tags: <a href="https://sohe.wisc.edu/tag/design-leadership-symposium/" rel="tag">Design Leadership Symposium</a>, <a href="https://sohe.wisc.edu/tag/technical-design/" rel="tag">Technical Design</a>, <a href="https://sohe.wisc.edu/tag/textiles-and-fashion-design/" rel="tag">textiles and fashion design</a></span>
+    <span class="meta-sep">|</span> <span class="comments-link"><a href="https://sohe.wisc.edu/technical-design-in-action/#respond">Comments</a></span></footer></article>        
+
+<section id="comments">
+    	<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/technical-design-in-action/#respond" style="display:none;">Cancel reply</a></small></h3>			<form action="https://sohe.wisc.edu/wordpress/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+				<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /><label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='34825' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="9ab38e4383" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="149"/></p>			</form>
+			</div><!-- #respond -->
+	</section>        <footer class="footer">
+        <nav id="nav-below" class="navigation" role="navigation">
+    <div class="nav-previous"><a href="https://sohe.wisc.edu/target-re-thinking-retail/" rel="prev"><span class="meta-nav">&larr;</span> Student Story: Re-Thinking Retail</a></div>
+    <div class="nav-next"><a href="https://sohe.wisc.edu/the-art-of-shoemaking/" rel="next">The Art of Shoemaking <span class="meta-nav">&rarr;</span></a></div>
+</nav>    </footer>
+</section>
+<aside id="sidebar" role="complementary">
+    <div id="sidebar-grid" class="sohe-grid"><div class="grid-row">
+        <div class="stamp grid-item large">
+            <div class="content">
+                <div class="wrapper" style="background-image:url('https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/PSL1.jpg?fit=300%2C300&ssl=1');" >
+                                    </div>
+            </div>
+        </div>
+
+        <div class="clear"></div></div><div class="grid-row">
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="Events" class="wrapper" style="background-image:url('https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/Events1.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/research-development/calendar-of-events/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-day"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">Events</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="Helen Louise Allen Textile Collection" class="wrapper" style="background-image:url('https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/HLATC2.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/research-development/textile-collection/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-star"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">Textile Collection</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        <div class="clear"></div></div><div class="grid-row">
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="Design Gallery" class="wrapper" style="background-image:url('https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/DG1.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/research-development/design-gallery/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-gallery"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">Design Gallery</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="Child Development Lab" class="wrapper" style="background-image:url('https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/PSL1.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/research-development/preschool-home/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-heart"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">Child Development Lab</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        <div class="clear"></div></div><div class="grid-row">
+        <div class="stamp grid-item large">
+            <div class="content">
+                <a title="Alumni" class="wrapper" style="background-image:url('https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2015/03/graduate_Bascom14_2019-e1426615694725.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/connect/alumni/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-user"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">Alumni</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        <div class="clear"></div></div><div class="grid-row">
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="Facebook" class="wrapper" style="background-image:url('https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/SocialMedia1.jpg?fit=300%2C300&ssl=1');" href="https://www.facebook.com/uwmadsohe" target="_blank" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-facebook"></div>
+                        <div class="decoration"></div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="SoHE People" class="wrapper" style="background-image:url('https://i1.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/PS3.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/connect/faculty-staff/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-handset"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">SoHE People</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        <div class="clear"></div></div><div class="grid-row">
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="Blog/News" class="wrapper" style="background-image:url('https://i0.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/05/WhatisHE1.jpg?fit=300%2C300&ssl=1');" href="https://sohe.wisc.edu/blog/" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-pinned"></div>
+                        <div class="decoration"></div>
+                                                    <div class="label">News</div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        
+        <div class="stamp grid-item ">
+            <div class="content">
+                <a title="What is HE?" class="wrapper" style="background-image:url('https://i2.wp.com/sohe.wisc.edu/wordpress/wp-content/uploads/2016/06/WhatisHE2.jpg?fit=300%2C300&ssl=1');" href="https://www.youtube.com/user/UWMadSoHE" >
+                                        <div class="center">
+                        <div class="icon genericon genericon-videocamera"></div>
+                        <div class="decoration"></div>
+                                            </div>
+                                    </a>
+            </div>
+        </div>
+
+        <div class="clear"></div></div>    <div class="clear"></div>
+</aside>
+        <div class="clear"></div>
+    </div> <!-- /#container -->
+    <footer id="footer" class="narrow" role="contentinfo">
+
+        <div class="wrapper">
+
+            <div id="quick-links">
+                        <div class="menu menu-theme-location-quick_links">
+            <h3 class="title">Quick Links</h3>
+            <div class="wrapper-col-4">
+                                    <ul class="col-4">
+                                                    <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSddJOzMzEjTjimtBTPGD2OUL1eO5J3sShfeLASLejqNQtMbrA/viewform">Away from Campus Form</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/prospective-students/advising/">Advising</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/connect/faculty-staff/">Directory</a></li>
+                                            </ul>
+                                    <ul class="col-4">
+                                                    <li><a href="https://sohe.wisc.edu/sohe101/about-human-ecology/">Departments</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/find-us/">Contact Us</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/research-development/calendar-of-events/">Events</a></li>
+                                            </ul>
+                                    <ul class="col-4">
+                                                    <li><a href="https://sohe.wisc.edu/blog/">News</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/sohe101/visit-us/">Visit</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/research-development/preschool-home/">Child Development Lab</a></li>
+                                            </ul>
+                                    <ul class="col-4">
+                                                    <li><a href="https://sohe.wisc.edu/research-development/centers-of-excellence/">Centers</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/connect/social-media/">Social Media</a></li>
+                                                    <li><a href="https://sohe.wisc.edu/prospective-students/scholarship/">Scholarships</a></li>
+                                            </ul>
+                            </div>
+            <div class="wrapper-col-2">
+                <ul class="col-2">                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSddJOzMzEjTjimtBTPGD2OUL1eO5J3sShfeLASLejqNQtMbrA/viewform">Away from Campus Form</a></li>
+                                                <li><a href="https://sohe.wisc.edu/prospective-students/advising/">Advising</a></li>
+                                                <li><a href="https://sohe.wisc.edu/connect/faculty-staff/">Directory</a></li>
+                                                <li><a href="https://sohe.wisc.edu/sohe101/about-human-ecology/">Departments</a></li>
+                                                <li><a href="https://sohe.wisc.edu/find-us/">Contact Us</a></li>
+                                                <li><a href="https://sohe.wisc.edu/research-development/calendar-of-events/">Events</a></li>
+                        </ul><ul class="col-2">                        <li><a href="https://sohe.wisc.edu/blog/">News</a></li>
+                                                <li><a href="https://sohe.wisc.edu/sohe101/visit-us/">Visit</a></li>
+                                                <li><a href="https://sohe.wisc.edu/research-development/preschool-home/">Child Development Lab</a></li>
+                                                <li><a href="https://sohe.wisc.edu/research-development/centers-of-excellence/">Centers</a></li>
+                                                <li><a href="https://sohe.wisc.edu/connect/social-media/">Social Media</a></li>
+                                                <li><a href="https://sohe.wisc.edu/prospective-students/scholarship/">Scholarships</a></li>
+                        </ul>            </div>
+            <div class="clear"></div>
+        </div>
+                    </div>
+
+            <div class="menus">
+                        <div class="menu menu-theme-location-footer_menu_left">
+            <h3 class="title">FACULTY &amp; STAFF RESOURCES</h3>
+            <div class="menu-faculty-staff-resources-container"><ul id="menu-faculty-staff-resources" class="menu"><li id="menu-item-23607" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-23607"><a href="https://sohe.wisc.edu/getting-things-done-at-sohe/">Getting Things Done at SoHE</a></li>
+<li id="menu-item-23608" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23608"><a href="https://sohe.wisc.edu/wordpress/wp-content/uploads/2018/01/2018_Core-Handbook_FINAL2.pdf">CORE Handbook</a></li>
+<li id="menu-item-23671" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23671"><a href="https://sohe.wisc.edu/sohe-business-page/">Business Office</a></li>
+<li id="menu-item-24725" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24725"><a href="https://sohe.wisc.edu/sohe-governance-policies-and-procedures/">SoHE Governance, Policies &#038; Procedures</a></li>
+</ul></div>        </div>
+                <div class="menu menu-theme-location-footer_menu_center">
+            <h3 class="title">EMPLOYERS</h3>
+            <div class="menu-employers-container"><ul id="menu-employers" class="menu"><li id="menu-item-23612" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23612"><a target="_blank" href="https://app.joinhandshake.com/login?school_approval_token=Gpgi3xBgIPax_SPDBApBleDmMlrVpQfa3GhNTsUsSFYGLjV6veuWkw">Handshake Login</a></li>
+<li id="menu-item-23613" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23613"><a href="https://sohe.wisc.edu/connect/recruit-hire/">Connect with SoHE Students</a></li>
+<li id="menu-item-23673" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23673"><a href="https://sohe.wisc.edu/sohe101/academic-departments/">Majors in SoHE</a></li>
+<li id="menu-item-23615" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23615"><a href="https://sohe.wisc.edu/prospective-students/contact-us/">Student Academic Affairs &#038; Career Development Office</a></li>
+</ul></div>        </div>
+                <div class="menu menu-theme-location-footer_menu_right">
+            <h3 class="title">ALUMNI</h3>
+            <div class="menu-alumni-container"><ul id="menu-alumni" class="menu"><li id="menu-item-23674" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23674"><a href="https://sohe.wisc.edu/connect/alumni/alumni-engagement-options/">Stay Connected</a></li>
+<li id="menu-item-23675" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23675"><a href="https://sohe.wisc.edu/prospective-students/career-preparation/post-graduation/">Post Graduation</a></li>
+<li id="menu-item-24099" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24099"><a href="https://sohe.wisc.edu/connect/alumni/alumni-stories/">Alumni News</a></li>
+<li id="menu-item-36506" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-36506"><a href="https://sohe.wisc.edu/connect/alumni/the-school-of-human-ecology-annual-fund/">Annual Fund</a></li>
+</ul></div>        </div>
+                    </div>
+
+            
+            <div class="clear"></div>
+
+        </div>
+
+    </footer>
+    <div class="clear"></div>
+
+
+</div> <!-- /#wrapper -->
+
+	<script type="text/javascript">
+		window.WPCOM_sharing_counts = {"https:\/\/sohe.wisc.edu\/technical-design-in-action\/":34825};
+	</script>
+							<div id="sharing_email" style="display: none;">
+		<form action="/technical-design-in-action/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input type="email" name="target_email" id="target_email" value="" />
+
+			
+				<label for="source_name">Your Name</label>
+				<input type="text" name="source_name" id="source_name" value="" />
+
+				<label for="source_email">Your Email Address</label>
+				<input type="email" name="source_email" id="source_email" value="" />
+
+						<input type="text" id="jetpack-source_f_name" name="source_f_name" class="input" value="" size="25" autocomplete="off" title="This field is for validation and should not be changed" />
+			
+			<img style="float: right; display: none" class="loading" src="https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/modules/sharedaddy/images/loading.gif" alt="loading" width="16" height="16" />
+			<input type="submit" value="Send Email" class="sharing_send" />
+			<a rel="nofollow" href="#cancel" class="sharing_cancel" role="button">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+<!-- `jetpack-carousel` is included in the concatenated jetpack.css -->
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/_inc/build/photon/photon.min.js?ver=20190201'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpcf7 = {"apiSettings":{"root":"https:\/\/sohe.wisc.edu\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.3'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201929'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/jquery/ui/droppable.min.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-includes/js/wp-embed.min.js?ver=5.1.1'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/_inc/build/spin.min.js?ver=1.3'></script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/_inc/build/jquery.spin.min.js?ver=1.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"en","ajaxurl":"https:\/\/sohe.wisc.edu\/wordpress\/wp-admin\/admin-ajax.php","nonce":"660b6f705e","display_exif":"1","display_geo":"1","single_image_gallery":"1","single_image_gallery_media_file":"","background_color":"black","comment":"Comment","post_comment":"Post Comment","write_comment":"Write a Comment...","loading_comments":"Loading Comments...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","copyright":"Copyright","comment_registration":"0","require_name_email":"1","login_url":"https:\/\/sohe.wisc.edu\/wordpress\/wp-login.php?redirect_to=https%3A%2F%2Fsohe.wisc.edu%2Ftechnical-design-in-action%2F","blog_id":"1","meta_data":["camera","aperture","shutter_speed","focal_length","copyright"],"local_comments_commenting_as":"<fieldset><label for=\"email\">Email (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">Name (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Website<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/_inc/build/carousel/jetpack-carousel.min.js?ver=20190102'></script>
+<script async="async" type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/akismet/_inc/form.js?ver=4.1.2'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var sharing_js_options = {"lang":"en","counts":"1","is_stats_active":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://sohe.wisc.edu/wordpress/wp-content/plugins/jetpack/_inc/build/sharedaddy/sharing.min.js?ver=7.5.2'></script>
+<script type='text/javascript'>
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-facebook', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomfacebook', 'menubar=1,resizable=1,width=600,height=400' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-twitter', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomtwitter', 'menubar=1,resizable=1,width=600,height=350' );
+				return false;
+			});
+var windowOpen;
+			jQuery( document.body ).on( 'click', 'a.share-linkedin', function() {
+				// If there's another sharing window open, close it.
+				if ( 'undefined' !== typeof windowOpen ) {
+					windowOpen.close();
+				}
+				windowOpen = window.open( jQuery( this ).attr( 'href' ), 'wpcomlinkedin', 'menubar=1,resizable=1,width=580,height=450' );
+				return false;
+			});
+</script>
+</body>
+</html>
